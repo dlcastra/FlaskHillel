@@ -29,8 +29,8 @@ def user_generation(generate: int):
     fake = Faker()
     user_digit = generate
 
-    default_quantity = [[fake.name(), fake.company_email()] for data in range(100)]  # Кількість за замовчуванням
-    user_quantity = [[fake.name(), fake.company_email()] for data in range(user_digit)]  # Кількість користувача
+    default_quantity = [[fake.name(), fake.company_email()] for _ in range(100)]  # Кількість за замовчуванням
+    user_quantity = [[fake.name(), fake.company_email()] for _ in range(user_digit)]  # Кількість користувача
 
     if user_digit > 0:
         return user_quantity
@@ -72,7 +72,7 @@ def cosmonaut_count():
     for person in response_in_json.get('people'):  # Беремо всі імена космонафтів, щоб потім перевірити їх кількість ще раз
         names.append(person['name'])
 
-    return f"Вказана кількість космонафтів {numbers_cosmonaut}, кількість після перевірки {len(names)}"
+    return f"Вказана кількість космонавтів {numbers_cosmonaut}, кількість після перевірки {len(names)}"
 
 
 @app.errorhandler(404)
