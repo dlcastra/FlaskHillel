@@ -63,5 +63,5 @@ def setup_tracks():
         track_con.commit()
 
 
-setup_customers()
-setup_tracks()
+# setup_customers()
+# setup_tracks()
