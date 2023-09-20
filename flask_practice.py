@@ -1,5 +1,6 @@
 from flask import Flask, send_file
 from faker import Faker
+from setups import setup_customers, setup_tracks
 import csv
 import requests
 
@@ -21,7 +22,7 @@ def main_page():
 
 @app.route('/requrements/', methods=['GET'])
 def requrements():
-    return send_file('requrements.txt', as_attachment=False)  # Висилаємо файл так, щоб його не пропонувало завантажити
+    return send_file('tables_and_txt/requrements.txt', as_attachment=False)  # Висилаємо файл так, щоб його не пропонувало завантажити
 
 
 @app.route('/users/generate/<int:generate>', methods=['GET'])
@@ -40,7 +41,7 @@ def user_generation(generate: int):
 
 @app.route('/mean/', methods=['GET'])
 def mean():
-    get_file = 'hw.csv'
+    get_file = 'tables_and_txt/hw.csv'
     heights = []
     weights = []
 
@@ -81,4 +82,6 @@ def error_404(error):
 
 
 if __name__ == "__main__":
+    setup_customers()
+    setup_tracks()
     app.run(debug=True)
