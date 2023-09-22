@@ -42,7 +42,8 @@ def setup_tracks():
             """
             CREATE TABLE IF NOT EXISTS tracks(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                track_name TEXT,
+                track_name VARCHAR(50),
+                singer VARCHAR(50),
                 track_length INTEGER,
                 release_date DATE
             )"""
@@ -50,18 +51,17 @@ def setup_tracks():
 
         for _ in range(100):
             track_name = fake.word()
+            singer = fake.name()
             track_length = fake.random_int(min=90, max=240)
             release_date = fake.date()
 
             cursor.execute(
                 """
-                INSERT INTO tracks (track_name, track_length, release_date)
-                VALUES (?, ?, ?)
+                INSERT INTO tracks (track_name, singer, track_length, release_date)
+                VALUES (?, ?, ?, ?)
                 """,
-                (track_name, track_length, release_date)
+                (track_name, singer, track_length, release_date)
             )
         track_con.commit()
 
 
-# setup_customers()
-# setup_tracks()
