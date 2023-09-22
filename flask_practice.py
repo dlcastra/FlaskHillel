@@ -23,7 +23,7 @@ def main_page():
         "<p>Напишіть у пошуковий рядок /mean/, щоб побачити середній зріст та вагу з файлу hw.csw"
         "<p>Напишіть у пошуковий рядок /space/, щоб побачити кількість космонафтів"
         "<p>Напишіть у пошуковий рядок /setup/, щоб згенерувати дані для бази даних"
-        "<p>Напишіть у пошуковий рядок /first_name/, щоб побачити кількість імен і самі імена в базі даних"
+        "<p>Напишіть у пошуковий рядок /names/, щоб побачити кількість імен і самі імена в базі даних"
         "<p>Напишіть у пошуковий рядок /tracks/, щоб побачити кількість треків в базі даних"
         "<p>Напишіть у пошуковий рядок /tracks-sec/, щоб побачити інформацію о треках"
 
@@ -44,7 +44,7 @@ def setups():
 @app.route('/requrements/', methods=['GET'])
 def requrements():
     # Висилаємо файл так, щоб його не пропонувало завантажити
-    return send_file('tables_and_txt/requrements.txt', as_attachment=False)
+    return send_file('requrements.txt', as_attachment=False)
 
 
 @app.route('/users/generate/<int:generate>', methods=['GET'])
@@ -102,7 +102,7 @@ def cosmonaut_count():
 """ -- Друга домашка flask + SQLite"""
 
 
-@app.route('/first_name/', methods=['GET'])
+@app.route('/names/', methods=['GET'])
 def get_customer_name():
     with sqlite3.connect('flask.db') as conn:
         cur = conn.cursor()
